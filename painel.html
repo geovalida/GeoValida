@@ -84,21 +84,18 @@
         <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between shadow-xl z-20 shrink-0">
             <div>
                 <!-- Menu de Operações -->
-                <div class="px-4 py-4 border-b border-slate-800">
-                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Módulos do Sistema</p>
-                </div>
-                <nav class="p-2 space-y-1">
-                    <button id="btn-geovalida" onclick="switchTab('geovalida')" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all bg-emerald-600 text-white shadow-md">
-                        <i data-lucide="map"></i>
-                        <span>Análise Geográfica</span>
+             <nav class="p-2 space-y-1">
+                    <button id="btn-geovalida" onclick="window.location.href='index.html'" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all bg-emerald-600 text-white shadow-md cursor-default">
+                        <i class="ph-bold ph-map-trifold text-lg"></i>
+                        <span>Validação Geográfica</span>
                     </button>
                     
                     <button id="btn-dashboard" onclick="switchTab('dashboard')" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all hover:bg-slate-800 text-slate-400 hover:text-slate-100">
                         <i data-lucide="pie-chart"></i>
-                        <span>Validação de Carteira</span>
+                        <span>Análise da Carteira</span>
                     </button>
                 </nav>
-                
+              
                 <div class="px-4 py-4 border-b border-slate-800 mt-4">
                     <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Monitoramento API</p>
                 </div>
