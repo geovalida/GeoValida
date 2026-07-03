@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>GeoValida BRDE - Início</title>
+  
+  <!-- ESSAS DUAS LINHAS SÃO A MÁGICA QUE ARRUMA O VISUAL -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+
+    /* =========================
+       GeoValida Home (Power Pages)
+       Header/Footer iguais ao Validador
+       ========================= */
+
+    /* Layout base */
+    .gv-shell{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    
+    .gv-grid--geo .gv-card { grid-column: span 3; }
+    .gv-ic--geo   { background:#e0f2fe; color:#075985; border-color:#bae6fd; border:1px solid #bae6fd; }
+    .gv-ic--check { background:#dcfce7; color:#166534; border-color:#bbf7d0; border:1px solid #bbf7d0; }
+    .gv-ic--car   { background:#fff7ed; color:#9a3412; border-color:#fed7aa; border:1px solid #fed7aa; }
+    .gv-ic--tools { background:#f1f5f9; color:#0f172a; border-color:#e2e8f0; border:1px solid #e2e8f0; }
+
+    @media (max-width: 992px){ .gv-grid--geo .gv-card { grid-column: span 6; } }
+    @media (max-width: 768px){ .gv-grid--geo .gv-card{ grid-column: span 12; } }
+    
+    
+ /* Layout base */
+.gv-shell{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+/* =========================
+   GRID 4 COLUNAS (Geo - Validações)
+   ========================= */
+.gv-grid--geo .gv-card {
+  grid-column: span 6;
+}
+
+/* Ícones do bloco geoespacial (cores sutis) */
+.gv-ic--geo   { background:#e0f2fe; color:#075985; border-color:#bae6fd; border:1px solid #bae6fd; }
+.gv-ic--check { background:#dcfce7; color:#166534; border-color:#bbf7d0; border:1px solid #bbf7d0; }
+.gv-ic--car   { background:#fff7ed; color:#9a3412; border-color:#fed7aa; border:1px solid #fed7aa; }
+.gv-ic--tools { background:#f1f5f9; color:#0f172a; border-color:#e2e8f0; border:1px solid #e2e8f0; }
+
+/* Responsivo: em telas médias, 2 por linha; em telas pequenas, 1 por linha */
+
+@media (max-width: 576px){
+  .gv-grid--geo .gv-card { grid-column: span 12; }
+}
+
+/* =========================
+   HEADER (igual ao Validador)
+   ========================= */
+   
+.gv-header{
+  background: #006837;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  margin-bottom: 22px;
+}
+
+.gv-header__inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  gap: 14px;
+}
+
+.gv-header__brand{ display:flex; align-items:center; }
+.gv-header__title{
+  margin: 0;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: .2px;
+}
+
+/* FORÇA COR DO TÍTULO NO POWER PAGES */
+.gv-header .gv-header__title{
+  color: #ffffff !important;
+}
+
+
+
+/* =========================
+   BOTÃO – ESTILO NOVA ANÁLISE
+   ========================= */
+
+.gv-cta-central {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.gv-btn-nova-analise {
+  background-color: #004b23;          /* verde escuro (igual Nova Análise) */
+  color: #ffffff !important;
+  padding: 12px 36px;
+  border-radius: 999px;               /* pill igual */
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none !important;
+  display: inline-block;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.gv-btn-nova-analise:hover {
+  background-color: #00361a;          /* hover igual */
+  transform: translateY(-1px);
+}
+.gv-header__cta:hover{ filter: brightness(.95); }
+.gv-cta-ic{
+  display:inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items:center;
+  justify-content:center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  font-size: 12px;
+}
+
+/* =========================
+   HERO (imagem)
+   ========================= */
+.gv-hero{
+  position: relative;
+  min-height: 60vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.gv-hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2,6,23,.55) 0%, rgba(2,6,23,.35) 50%, rgba(2,6,23,.55) 100%);
+}
+
+.gv-hero__content{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 110px 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.gv-hero__badge{
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  font-weight: 900;
+  letter-spacing: .3px;
+  font-size: 12px;
+}
+
+.gv-hero__title{
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  text-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+.gv-hero__lead{
+  max-width: 900px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  opacity: .96;
+}
+
+.gv-hero__actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin-top: 8px;
+}
+
+.gv-hero__pills{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin-top: 6px;
+}
+
+.gv-pill{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.20);
+}
+
+/* =========================
+   Botões (home)
+   ========================= */
+.gv-btn{
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 900;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+}
+
+.gv-btn--primary{
+  background: #0f5132;
+  border: 1px solid #0f5132;
+  color: #fff !important;
+}
+.gv-btn--primary:hover{ filter: brightness(.95); }
+
+.gv-btn--secondary{
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a !important;
+}
+.gv-btn--secondary:hover{ background: #f8fafc; }
+
+.gv-btn--ghost{
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.28);
+  color: #fff !important;
+}
+.gv-btn--ghost:hover{ background: rgba(255,255,255,.18); }
+
+.gv-btn--full{ width: 100%; }
+
+/* =========================
+   Seções/boxes
+   ========================= */
+.gv-section{ padding: 24px 0; background: transparent; }
+
+.gv-box{
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(2,6,23,.06);
+}
+
+.gv-box--compact{ padding: 18px; }
+.gv-box--cta{
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+/* Tipografia */
+.gv-h2{
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+.gv-h3{
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+.gv-text{
+  font-size: 15px;
+  line-height: 1.65;
+  color: #334155;
+  margin: 0 0 10px;
+}
+.gv-muted{ color: #64748b; }
+
+/* Ações */
+.gv-actions-row{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Listas */
+.gv-list{
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.gv-list li{ margin: 8px 0; }
+
+/* Grid */
+.gv-grid{ display: grid; gap: 14px; }
+
+.gv-grid--features{
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 14px;
+}
+
+.gv-card{
+  grid-column: span 4;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+}
+
+.gv-card__title{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  margin-bottom: 10px;
+}
+
+.gv-card__heading{ font-weight: 900; color: #0f172a; font-size: 15px; }
+.gv-card__sub{ color: #64748b; font-size: 12px; margin-top: 2px; }
+
+.gv-ic{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+  border: 1px solid transparent;
+}
+
+.gv-ic--prodes{ background:#fee2e2; color:#7f1d1d; border-color:#fecaca; }
+.gv-ic--mb{ background:#ffe4e6; color:#9f1239; border-color:#fecdd3; }
+.gv-ic--ibama{ background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff; }
+.gv-ic--uc{ background:#dcfce7; color:#166534; border-color:#bbf7d0; }
+.gv-ic--fp{ background:#ecfeff; color:#155e75; border-color:#a5f3fc; }
+
+.gv-note{
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 3 colunas */
+.gv-grid--three{
+  grid-template-columns: repeat(12, 1fr);
+}
+.gv-grid--three > div{ grid-column: span 4; }
+
+.gv-steps{
+  margin: 10px 0 14px 18px;
+  padding: 0;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.gv-steps li{ margin: 6px 0; }
+
+/* =========================
+   FOOTER (igual Validador)
+   ========================= */
+.gv-footer{
+  margin-top: 28px;
+  border-top: 1px solid #e5e7eb;
+  padding: 36px 0;
+  background: #fff;
+}
+
+.gv-footer__inner{
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.gv-footer__left{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  justify-content:center;
+  width: 100%;
+}
+
+.gv-brde{
+  font-weight: 900;
+  color: #0f5132;
+  font-size: 20px;
+  letter-spacing: .5px;
+}
+
+.gv-divider{
+  width: 1px;
+  height: 18px;
+  background: #cbd5e1;
+}
+
+.gv-footer__text{
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gv-footer__right{
+  width: 100%;
+  text-align: center;
+}
+
+.gv-footer__rightbox{
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsivo */
+@media (max-width: 992px){
+  .gv-hero__content{ padding: 90px 0 55px; }
+  .gv-hero__title{ font-size: 26px; }
+
+  .gv-card{ grid-column: span 12; }
+  .gv-grid--three > div{ grid-column: span 12; }
+
+  .gv-header__inner{ flex-direction: column; align-items: flex-start; }
+  .gv-header__cta{ align-self: flex-start; }
+}
+/* =========================
+   GRID 4 COLUNAS (Geo - Validações)
+   ========================= */
+.gv-grid--geo .gv-card {
+  grid-column: span 3; /* 12/3 = 4 cards por linha */
+}
+
+/* Ícones do bloco geoespacial (cores sutis) */
+.gv-ic--geo   { background:#e0f2fe; color:#075985; border-color:#bae6fd; border:1px solid #bae6fd; }
+.gv-ic--check { background:#dcfce7; color:#166534; border-color:#bbf7d0; border:1px solid #bbf7d0; }
+.gv-ic--car   { background:#fff7ed; color:#9a3412; border-color:#fed7aa; border:1px solid #fed7aa; }
+.gv-ic--tools { background:#f1f5f9; color:#0f172a; border-color:#e2e8f0; border:1px solid #e2e8f0; }
+
+/* Responsivo: em telas médias, 2 por linha; em telas pequenas, 1 por linha */
+@media (max-width: 992px){
+  .gv-grid--geo .gv-card { grid-column: span 6; }
+}
+
+/* Responsivo: em telas pequenas, 1 por linha */
+@media (max-width: 768px){
+  .gv-grid--geo .gv-card{ grid-column: span 12; }
+}
+
+</style>
+</head>
+
+<!-- Diferente do arquivo principal, a Home DEVE rolar (não tem h-screen overflow-hidden) -->
+<body class="bg-slate-50 m-0 p-0 font-sans text-slate-800">
+
+<!-- NOVO CABEÇALHO ENTERPRISE (Exatamente igual ao arquivo principal) -->
+<header class="bg-[#006837] text-white shadow-md z-50 sticky top-0">
+    <div class="w-full mx-auto px-4 py-2 flex justify-between items-center">
+        
+        <!-- LADO ESQUERDO: Home + Menu + Logo -->
+        <div class="flex items-center gap-3">
+            <!-- Botão Home (Fica visivelmente ativo na home) -->
+            <a href="Home.html" title="Página Inicial" class="flex items-center justify-center p-1.5 rounded bg-[#004b23] transition-colors border border-[#00361a] shadow-inner">
+                <i class="ph-bold ph-house text-lg"></i>
+            </a>
+            
+            <!-- Botão Menu (Na Home ele pode apenas recarregar a página principal do mapa) -->
+            <a href="index.html" title="Ir para o Sistema" class="flex items-center justify-center p-1.5 rounded bg-[#005d3b] hover:bg-[#004b23] transition-colors border border-[#004b23]">
+                <i class="ph-bold ph-list text-lg"></i>
+            </a>
+
+            <!-- Título do Sistema -->
+            <div class="ml-2 flex flex-col justify-center">
+                <div class="flex items-center gap-2">
+                    <h1 class="font-bold text-lg leading-none tracking-tight">GeoValida</h1>
+                
+                </div>
+                <p class="text-[9px] text-emerald-100/80 uppercase tracking-widest font-semibold mt-0.5">Sistema de Validação Geoespacial e Análise Ambiental</p>
+            </div>
+        </div>
+
+        <!-- LADO DIREITO: Botão Nova Análise (Redireciona para o Validador) -->
+        <a href="index.html" class="bg-[#004b23] hover:bg-[#00361a] transition-colors px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-2 shadow-inner text-white no-underline">
+            <i class="ph-bold ph-map-pin-fill"></i> <span class="hidden md:inline">Nova Análise</span>
+        </a>
+    </div>
+</header>
+
+<script>
+  $(document).ready(function (){
+    $('#entitylist-filters').prepend('<div class="filter-group"></div>');
+    $('.entitylist-filter-option-group').appendTo($('.filter-group'));
+    $('.pull-right > .btn-entitylist-filter-submit').appendTo($('.filter-group'));
+    $('.entitylist-search').appendTo($('#entitylist-filters'));
+
+    $('.filter-group').css({
+        "display": "flex",
+    })
+
+    $('#entitylist-filters').css({
+        "display": "flex",
+        "align-items": "center",
+        "justify-content": "space-between"
+    })
+
+    $('.btn-entitylist-filter-submit').css({
+        "align-self": "self-end",
+        "margin-left": "30px"
+    });
+
+    $('.entitylist-search').css({
+        "align-self": "self-end",
+        "margin-left": "30px"
+    })
+
+    $('.entitylist-search > input').css({
+        "border-radius": "10px",
+        "width": "228px",
+        "height": "40px",
+        "color": "#2a2c2e",
+        "padding": "10px",
+        "gap": "10px",
+        "border": "var(--portalThemeColor1) 2px solid",
+        "font-size": "15px",
+        "margin-right": "-60px",
+    });
+
+    $('#entitylist-filters > div.input-group.pull-left.view-search.entitylist-search > input').css({
+        "background-color": "transparent !important"
+    })
+
+    $('.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group').css({
+        "background-color": "transparent",
+        "margin-left": -"70px",
+        "border": "none",
+        "color": "var(--portalBasicTheme1)",
+        "font-size": "22px"
+    });
+
+    $('#entitylist-filters > div.filter-group > li > ul > li > div > span').css({
+        "display": "none"
+    });
+
+    $('#dropdown_0').css({
+        "background-color": "transparent",
+        "border": "1px solid var(--portalThemeColor1)",
+        "border-radius": "10px"
+    })
+});
+</script>
+<!-- Corpo modificado para layout de tela inteira sem rolagem global -->
+<body class="p-0 flex flex-col h-screen overflow-hidden bg-slate-50">
+    
+
+
+<!-- =========================
+     HERO (imagem + CTA)
+     ========================= --><!-- =========================
+     SOBRE
+     ========================= -->
+<section class="gv-section">
+  <div class="gv-shell">
+    <div class="gv-box">
+      <p class="gv-text">O <strong aria-label="Texto GeoValida BRDE" style="position: relative;">GeoValida BRDE</strong> é uma solução de validação geoespacial para análise de imóveis rurais e glebas, consolidando regras de consistência geométrica e <strong aria-label="Texto consultas ambientais em bases públicas oficiais" style="position: relative;">consultas ambientais em bases públicas oficiais</strong>.</p>
+      <p class="gv-text">
+        A plataforma reduz retrabalho, melhora a qualidade dos dados e disponibiliza <strong>relatórios técnicos padronizados</strong>
+        por imóvel, com rastreabilidade de sessão e mensagens consistentes (diferenciando “sem ocorrência” de “não foi possível consultar”).
+      </p>
+      <div class="gv-actions-row gv-cta-central"><a href="index.html" class="gv-btn-nova-analise"> Comece a validar </a></div>
+    </div>
+  </div>
+</section>
+<!-- =========================
+     BLOCO – VALIDAÇÕES GEOESPACIAIS
+     ========================= -->
+<section class="gv-section">
+  <div class="gv-shell">
+    <div class="gv-box">
+      <h2 class="gv-h2">Validações Geoespaciais e Processamento Interno</h2>
+      <p class="gv-text gv-muted">O GeoValida executa validações automáticas de integridade geométrica, consistência com o CAR e correções opcionais, garantindo dados confiáveis e rastreabilidade para auditoria.</p>
+      <div class="gv-grid gv-grid--features gv-grid--geo">
+        <!-- CARD 1 -->
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--geo">G</span>
+            <div>
+              <div class="gv-card__heading">Processamento interno</div>
+              <div class="gv-card__sub">Leitura, padronização e organização</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Leitura, interpretação e padronização das glebas enviadas.</li>
+            <li>Separação de anéis: externo e subglebas (holes).</li>
+            <li>Fechamento obrigatório dos polígonos.</li>
+            <li>Indexação sequencial dos vértices.</li>
+          </ul>
+        </div>
+        <!-- CARD 2 -->
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--check">✓</span>
+            <div>
+              <div class="gv-card__heading">Validações automáticas</div>
+              <div class="gv-card__sub">Integridade e conflitos geométricos</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Anéis fechados e mínimo de 4 vértices distintos.</li>
+            <li>Máximo de 99 pontos por anel.</li>
+            <li>Detecção de auto-intersecções e cruzamentos internos.</li>
+            <li>Detecção de sobreposição entre glebas diferentes com marcação no mapa.</li>
+          </ul>
+        </div>
+        <!-- CARD 3 -->
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--car">C</span>
+            <div>
+              <div class="gv-card__heading">Conteúdo do CAR &amp; Contenção</div>
+              <div class="gv-card__sub">Unificação e extravasamento</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Unificação dos CARs enviados (área consolidada).</li>
+            <li>Extração apenas de Polygon/MultiPolygon válidos.</li>
+            <li>Confronto: glebas vs CAR consolidado (contenção).</li>
+            <li>Cálculo de % extravasado e destaque em vermelho no mapa.</li>
+          </ul>
+        </div>
+        <!-- CARD 4 -->
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--tools">⚙</span>
+            <div>
+              <div class="gv-card__heading">Correções &amp; Recursos</div>
+              <div class="gv-card__sub">Ajustes opcionais + ferramentas</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Fechamento automático de polígonos abertos.</li>
+            <li>Clipping de glebas extravasadas e remoção sem interseção com CAR.</li>
+            <li>Simplificação de geometrias (&gt;99 pontos) e correção de cruzamentos.</li>
+            <li>Mostrar pontos, excluir vértice, desfazer edição, export TXT/XLSX e relatório auditável.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================
+     ANÁLISES AMBIENTAIS
+     ========================= -->
+<section class="gv-section">
+  <div class="gv-shell">
+    <div class="gv-box">
+      <h2 class="gv-h2">Análises Ambientais Integradas</h2>
+      <p class="gv-text gv-muted">Consultas automáticas e padronizadas para apoiar conformidade e gestão de risco ambiental, com cálculo de interseção, área sobreposta, percentual e detalhamento por imóvel.</p>
+      <div class="gv-grid gv-grid--features">
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--prodes">P</span>
+            <div>
+              <div class="gv-card__heading">PRODES</div>
+              <div class="gv-card__sub">Supressão de vegetação (marco 2019)</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Cálculo de área suprimida e comprometimento (%) por imóvel.</li>
+            <li>Detalhamento por ano (2019–2025) e consolidação por CAR.</li>
+            <li>Mensagens consistentes e evidências para auditoria.</li>
+          </ul>
+        </div>
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--mb">M</span>
+            <div>
+              <div class="gv-card__heading">MapBiomas Alertas</div>
+              <div class="gv-card__sub">Alertas e laudo oficial</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Interseção do alerta com o imóvel e percentual sobreposto.</li>
+            <li>Link direto ao laudo oficial como evidência documental.</li>
+            <li>Consolidação por imóvel e rastreio de datas.</li>
+          </ul>
+        </div>
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--ibama">I</span>
+            <div>
+              <div class="gv-card__heading">Embargos IBAMA</div>
+              <div class="gv-card__sub">Restrições e autos</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Verificação de embargos e área dentro do CAR (ha e %).</li>
+            <li>Detalhamento de TAD/processo/descrição e município/UF.</li>
+            <li>Saída padronizada para “sem ocorrência” vs “falha de consulta”.</li>
+          </ul>
+        </div>
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--uc">U</span>
+            <div>
+              <div class="gv-card__heading">Unidades de Conservação</div>
+              <div class="gv-card__sub">ICMBio / UCs federais</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Interseção com UC, categoria, esfera e ato de criação.</li>
+            <li>Cálculo de área dentro do CAR e percentual sobreposto.</li>
+            <li>Apresentação padronizada por imóvel para rastreabilidade.</li>
+          </ul>
+        </div>
+        <div class="gv-card">
+          <div class="gv-card__title">
+            <span class="gv-ic gv-ic--fp">F</span>
+            <div>
+              <div class="gv-card__heading">Florestas Públicas</div>
+              <div class="gv-card__sub">CNFP / Serviço Florestal</div>
+            </div>
+          </div>
+          <ul class="gv-list">
+            <li>Detecção de interseção com CNFP e classificação do registro.</li>
+            <li>Cálculo de área dentro do CAR e percentual sobreposto.</li>
+            <li>Consolidação por imóvel com município/UF.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gv-note"><strong>Transparência:</strong> o sistema diferencia <em>“nenhuma ocorrência”</em> de <em>“não foi possível consultar”</em>, reduzindo risco de interpretação quando uma base estiver indisponível.</div>
+    </div>
+  </div>
+</section>
+<!-- =========================
+     BENEFÍCIOS / EFICIÊNCIA / CTA
+     ========================= -->
+<section id="como-funciona" class="gv-section">
+  <div class="gv-shell">
+    <div class="gv-grid gv-grid--three">
+      <div class="gv-box gv-box--compact">
+        <h3 class="gv-h3">Benefícios</h3>
+        <ul class="gv-list">
+          <li>Validação geoespacial precisa de CAR e glebas.</li>
+          <li>Visão ambiental integrada em bases oficiais.</li>
+          <li>Padronização e rastreabilidade para auditoria.</li>
+          <li>Relatório técnico pronto para anexação.</li>
+        </ul>
+      </div>
+      <div class="gv-box gv-box--compact">
+        <h3 class="gv-h3">Eficiência Operacional</h3>
+        <ul class="gv-list">
+          <li>Processamento rápido mesmo com grandes áreas.</li>
+          <li>Automação de interseções e cálculos de métricas.</li>
+          <li>Mensagens consistentes e acionáveis ao usuário.</li>
+          <li>Exportação de PDF padronizado por imóvel.</li>
+        </ul>
+      </div>
+      <div class="gv-box gv-box--cta">
+        <h3 class="gv-h3">Comece agora</h3>
+        <p class="gv-text">Informe o CAR, carregue as glebas e gere o relatório com as análises ambientais integradas.</p>
+        <ol class="gv-steps">
+          <li><strong>Carregue/Informe</strong> CAR e glebas</li>
+          <li><strong>Valide</strong> geometria e consistência</li>
+          <li><strong>Analise</strong> PRODES, IBAMA, MapBiomas, UC e FP</li>
+          <li>​​<strong aria-label="Texto Exporte" style="position: relative;">Exporte</strong> relatório técnico (PDF)</li>
+        </ol>
+        <div class="gv-cta-central"><a href="GeoValidaBRDE.html" class="gv-btn-nova-analise"> Comece a validar </a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================
+     FOOTER (igual Validador)
+     ========================= -->
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"><div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"></div></div>
+</div>
+<footer class="gv-footer">
+  <div class="gv-shell gv-footer__inner">
+    <!-- Lado Esquerdo -->
+    <div class="gv-footer__left">
+      <span class="gv-brde">BRDE</span>
+      <div class="gv-divider"></div>
+      <span class="gv-footer__text">Sistema de Validação Geoespacial e Análise Ambiental</span>
+    </div>
+   
+    <div class="gv-footer__right">
+      <div class="gv-footer__rightbox"><p></p></div>
+    </div>
+  </div>
+</footer>
