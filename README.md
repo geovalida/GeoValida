@@ -1,4 +1,5 @@
 GeoValida 🌎
+
 GeoValida is a geospatial validation platform developed to support environmental and territorial analysis of rural credit operations.
 
 The project was created within the context of Development Banking to automate validations traditionally performed manually during rural credit analysis.
@@ -98,6 +99,8 @@ Satellite imagery integration
 Power BI dashboards
 Territorial intelligence modules
 AI-assisted geospatial analysis
+
+CAR for tests: SC-4213807-DF838A168F67450A90F7CCDA8A533F10
 
 Author
 Adriele Amorim
