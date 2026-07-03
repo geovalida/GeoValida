@@ -1,16 +1,107 @@
-## Hi there 👋
+GeoValida 🌎
+GeoValida is a geospatial validation platform developed to support environmental and territorial analysis of rural credit operations.
 
-<!--
-**geovalida/GeoValida** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+The project was created within the context of Development Banking to automate validations traditionally performed manually during rural credit analysis.
 
-Here are some ideas to get you started:
+Overview
+GeoValida integrates geospatial datasets and environmental information to identify inconsistencies, risks and territorial restrictions associated with financed properties.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+The platform enables analysts to validate geographic information quickly and consistently, reducing operational effort and improving decision quality.
+
+Main Features
+Spatial Validation
+Polygon validation
+Geometry consistency checks
+Coordinate validation
+Automatic area calculation
+File Import
+Supported formats:
+
+KML
+GeoJSON
+Shapefile (.zip)
+XLS/XLSX
+TXT
+Environmental Intelligence
+Integration with:
+
+SICAR
+CAR
+Protected Areas
+Public Forests
+Embargoed Areas
+Environmental Restriction Layers
+Spatial Analysis
+Overlap detection
+Intersection analysis
+Proximity analysis
+Bounding box generation
+Interactive Map
+Built with Leaflet:
+
+Polygon editing
+Coordinate visualization
+Layer control
+Attribute inspection
+Architecture
+Frontend:
+
+HTML
+JavaScript
+Leaflet
+Backend:
+
+C# (.NET Framework)
+REST APIs
+Database:
+
+Oracle Database
+Oracle Spatial
+Geospatial Libraries:
+
+GeoJSON
+Shapely
+GeoPandas
+Use Cases
+Rural Credit Analysis
+Validate:
+
+Financed plots
+Property boundaries
+Environmental restrictions
+CAR registration consistency
+Portfolio Monitoring
+Monitor:
+
+CAR status changes
+Environmental restrictions
+Territorial conflicts
+Spatial inconsistencies
+Compliance
+Support environmental compliance verification for development finance operations.
+
+Benefits
+✅ Reduced manual analysis effort
+
+✅ Faster environmental validation
+
+✅ Improved data quality
+
+✅ Automated spatial checks
+
+✅ Better risk management
+
+Future Roadmap
+Automated SICAR monitoring
+Temporal change detection
+Satellite imagery integration
+Power BI dashboards
+Territorial intelligence modules
+AI-assisted geospatial analysis
+
+Author
+Adriele Amorim
+
+Economist | Digital Products Analyst
+
+Development Banking • Geospatial Intelligence • Data Analytics
