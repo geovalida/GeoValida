@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoValida Corporate - BRBank Integration</title>
+    <title>GeoValida - Análise da Carteira</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Leaflet CSS & JS -->
@@ -100,7 +100,7 @@
                 </nav>
                 
                 <div class="px-4 py-4 border-b border-slate-800 mt-4">
-                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Monitoramento API BRBank</p>
+                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Monitoramento API</p>
                 </div>
                 <div class="p-3">
                     <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
@@ -116,7 +116,7 @@
 
             <!-- Footer Sidebar -->
             <div class="p-4 border-t border-slate-800 text-[11px] text-slate-500">
-                <p>BRBank Agência de Fomento S/A</p>
+                <p>GeoValida</p>
                 <p class="mt-0.5">© 2026 GeoValida</p>
             </div>
         </aside>
@@ -132,7 +132,7 @@
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-4">
                             <i data-lucide="search" class="text-[#005d3b] w-5 h-5"></i>
-                            <h2 class="text-base font-bold text-slate-800">Buscar Contrato BRBank</h2>
+                            <h2 class="text-base font-bold text-slate-800">Buscar Contrato</h2>
                         </div>
                         
                         <!-- Formulário de Consulta -->
@@ -225,10 +225,10 @@
                         </div>
                     </div>
 
-                    <!-- Rodapé do controle: terminal de requisições BRBank -->
+                    <!-- Rodapé do controle: terminal de requisições  -->
                     <div class="p-4 border-t border-slate-200 bg-slate-900 text-slate-100">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Terminal Log Integrado (BRBank)</span>
+                            <span class="text-[10px] font-bold uppercase text-slate-400">Terminal Log Integrado</span>
                             <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded border border-emerald-800">STREAMING</span>
                         </div>
                         <div id="api-logs" class="h-28 overflow-y-auto text-[10px] font-mono p-1 bg-slate-950 rounded border border-slate-800 space-y-1">
@@ -421,7 +421,7 @@
             <div class="px-6 py-4 bg-[#005d3b] text-white flex justify-between items-center rounded-t-xl shrink-0">
                 <div>
                     <h3 class="font-bold text-base flex items-center gap-2"><i data-lucide="award"></i> Certificado de Validação Geodecológica</h3>
-                    <p class="text-xs text-emerald-200">Emitido automaticamente pelo módulo de inteligência ambiental BRBank</p>
+                    <p class="text-xs text-emerald-200">Emitido automaticamente pelo módulo de inteligência ambiental</p>
                 </div>
                 <button onclick="fecharLaudo()" class="text-white hover:text-slate-200 font-bold">&times;</button>
             </div>
@@ -429,7 +429,7 @@
             <div class="p-8 overflow-y-auto space-y-6 text-sm" id="laudo-print-area">
                 <div class="flex justify-between items-start border-b pb-4">
                     <div>
-                        <p class="font-bold text-slate-800 text-lg">BRBank - Relatório Ambiental Unificado</p>
+                        <p class="font-bold text-slate-800 text-lg"> Relatório Ambiental Unificado</p>
                         <p class="text-xs text-slate-500">ID da Certificação: <span class="font-mono text-slate-700" id="laudo-id-certificado"></span></p>
                     </div>
                     <div class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded font-mono font-bold text-center">
@@ -755,11 +755,11 @@
             const contratoLocalizado = CONTRATOS_MOCK.find(c => c.contrato === contratoNum && c.agencia === agencia);
 
             if (!contratoLocalizado) {
-                logTerminal(`Erro HTTP 404: Contrato ${contratoNum} não encontrado no banco de dados corporativo do BRBank.`, "error");
+                logTerminal(`Erro HTTP 404: Contrato ${contratoNum} não encontrado no banco de dados corporativo.`, "error");
                 return;
             }
 
-            // Simulação de chamadas paginadas assíncronas do backend à API original do BRBank
+            // Simulação de chamadas paginadas assíncronas do backend à API original
             let currentPage = 1;
             const totalPages = 3;
             const countPage = 100;
@@ -769,7 +769,7 @@
                     const isLast = currentPage === totalPages;
                     const countPoints = isLast ? 34 : countPage;
                     
-                    logTerminal(`[BRBank SDK] Consumindo coordenadas - Página ${currentPage}/${totalPages} (${countPoints} pontos geodésicos obtidos)`, "info");
+                    logTerminal(`Consumindo coordenadas - Página ${currentPage}/${totalPages} (${countPoints} pontos geodésicos obtidos)`, "info");
                     
                     currentPage++;
                     setTimeout(processarProximaPagina, 600);
