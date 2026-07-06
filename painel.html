@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoValida - Análise da Carteira</title>
+    <title>GeoValida Corporate - BRBank Integration</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Leaflet CSS & JS -->
@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body {
@@ -46,35 +47,34 @@
 </head>
 <body class="h-screen overflow-hidden flex flex-col">
 
-   <!-- NOVO CABEÇALHO (Mais fino, fontes menores, estilo Enterprise) -->
+ <!-- NOVO CABEÇALHO (Mais fino, fontes menores, estilo Enterprise) -->
+<!-- NOVO CABEÇALHO ENTERPRISE -->
 <header class="bg-[#006837] text-white shadow-md z-50 shrink-0">
     <div class="w-full mx-auto px-4 py-2 flex justify-between items-center">
-        
-        <!-- LADO ESQUERDO: Home + Menu + Logo -->
+        <!-- LADO ESQUERDO -->
         <div class="flex items-center gap-3">
-            <!-- Botão Home -->
-            <a href="home.html" title="Página Inicial" class="flex items-center justify-center p-1.5 rounded bg-[#005d3b] hover:bg-[#004b23] transition-colors border border-[#004b23]">
+            <a href="Home.html" title="Página Inicial" class="flex items-center justify-center p-1.5 rounded bg-[#005d3b] hover:bg-[#004b23] transition-colors border border-[#004b23]">
                 <i class="ph-bold ph-house text-lg"></i>
             </a>
-            
-            <!-- Botão Menu Hambúrguer -->
             <button onclick="toggleMainMenu()" title="Abrir/Fechar Menu" class="flex items-center justify-center p-1.5 rounded bg-[#005d3b] hover:bg-[#004b23] transition-colors border border-[#004b23]">
                 <i class="ph-bold ph-list text-lg"></i>
             </button>
-
-            <!-- Título do Sistema -->
             <div class="ml-2 flex flex-col justify-center">
                 <div class="flex items-center gap-2">
                     <h1 class="font-bold text-lg leading-none tracking-tight">GeoValida</h1>
+                    <span class="bg-emerald-600/50 border border-emerald-400 text-emerald-100 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">V2.5 Enterprise</span>
                 </div>
-                <p class="text-[9px] text-emerald-100/80 uppercase tracking-widest font-semibold mt-0.5">Sistema de Validação Geoespacial e Análise Ambiental</p>
+                <p class="text-[9px] text-emerald-100/80 uppercase tracking-widest font-semibold mt-0.5">Plataforma de Inteligência Territorial</p>
             </div>
         </div>
-
-        <!-- LADO DIREITO: Botão Nova Análise -->
-        <button onclick="window.location.reload()" class="bg-[#004b23] hover:bg-[#00361a] transition-colors px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-2 shadow-inner">
-            <i class="ph-bold ph-map-pin-fill"></i> <span class="hidden md:inline">Nova Análise</span>
-        </button>
+        <!-- LADO DIREITO -->
+        <div class="flex items-center gap-4">
+            <div class="text-right hidden md:block">
+                <p class="text-xs font-semibold">Carlos Vinícius Rosati</p>
+                <p class="text-[10px] text-emerald-200">Arquiteto de Soluções</p>
+            </div>
+            <div class="w-9 h-9 rounded-full bg-[#004b23] border border-emerald-400 flex items-center justify-center font-bold text-sm shadow-inner">CR</div>
+        </div>
     </div>
 </header>
     <!-- MAIN CONTAINER (SIDEBAR + CONTENT) -->
@@ -84,20 +84,25 @@
         <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between shadow-xl z-20 shrink-0">
             <div>
                 <!-- Menu de Operações -->
-             <nav class="p-2 space-y-1">
-                    <button id="btn-geovalida" onclick="window.location.href='index.html'" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all bg-emerald-600 text-white shadow-md cursor-default">
-                        <i class="ph-bold ph-map-trifold text-lg"></i>
-                        <span>Validação Geográfica</span>
-                    </button>
-                    
-                    <button id="btn-dashboard" onclick="switchTab('dashboard')" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all hover:bg-slate-800 text-slate-400 hover:text-slate-100">
-                        <i data-lucide="pie-chart"></i>
-                        <span>Análise da Carteira</span>
-                    </button>
-                </nav>
-              
+                <div class="px-4 py-4 border-b border-slate-800">
+                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Módulos do Sistema</p>
+                </div>
+                <nav class="p-2 space-y-1">
+    <!-- Redireciona para o Validador Principal -->
+    <button id="btn-geovalida" onclick="window.location.href='GeoValidaBRDE.html'" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all hover:bg-slate-800 text-slate-400 hover:text-slate-100">
+        <i data-lucide="map"></i>
+        <span>Análise Geográfica</span>
+    </button>
+    
+    <!-- Painel Atual (Fica Verde) -->
+    <button id="btn-dashboard" class="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-all bg-emerald-600 text-white shadow-md cursor-default">
+        <i data-lucide="pie-chart"></i>
+        <span>Validação de Carteira</span>
+    </button>
+</nav>
+                
                 <div class="px-4 py-4 border-b border-slate-800 mt-4">
-                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Monitoramento API</p>
+                    <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Monitoramento API BRBank</p>
                 </div>
                 <div class="p-3">
                     <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-xs">
@@ -113,7 +118,7 @@
 
             <!-- Footer Sidebar -->
             <div class="p-4 border-t border-slate-800 text-[11px] text-slate-500">
-                <p>GeoValida</p>
+                <p>BRBank Agência de Fomento S/A</p>
                 <p class="mt-0.5">© 2026 GeoValida</p>
             </div>
         </aside>
@@ -129,7 +134,7 @@
                     <div class="p-5">
                         <div class="flex items-center gap-2 mb-4">
                             <i data-lucide="search" class="text-[#005d3b] w-5 h-5"></i>
-                            <h2 class="text-base font-bold text-slate-800">Buscar Contrato</h2>
+                            <h2 class="text-base font-bold text-slate-800">Buscar Contrato BRBank</h2>
                         </div>
                         
                         <!-- Formulário de Consulta -->
@@ -222,10 +227,10 @@
                         </div>
                     </div>
 
-                    <!-- Rodapé do controle: terminal de requisições  -->
+                    <!-- Rodapé do controle: terminal de requisições BRBank -->
                     <div class="p-4 border-t border-slate-200 bg-slate-900 text-slate-100">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-[10px] font-bold uppercase text-slate-400">Terminal Log Integrado</span>
+                            <span class="text-[10px] font-bold uppercase text-slate-400">Terminal Log Integrado (BRBank)</span>
                             <span class="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 rounded border border-emerald-800">STREAMING</span>
                         </div>
                         <div id="api-logs" class="h-28 overflow-y-auto text-[10px] font-mono p-1 bg-slate-950 rounded border border-slate-800 space-y-1">
@@ -418,7 +423,7 @@
             <div class="px-6 py-4 bg-[#005d3b] text-white flex justify-between items-center rounded-t-xl shrink-0">
                 <div>
                     <h3 class="font-bold text-base flex items-center gap-2"><i data-lucide="award"></i> Certificado de Validação Geodecológica</h3>
-                    <p class="text-xs text-emerald-200">Emitido automaticamente pelo módulo de inteligência ambiental</p>
+                    <p class="text-xs text-emerald-200">Emitido automaticamente pelo módulo de inteligência ambiental BRBank</p>
                 </div>
                 <button onclick="fecharLaudo()" class="text-white hover:text-slate-200 font-bold">&times;</button>
             </div>
@@ -426,7 +431,7 @@
             <div class="p-8 overflow-y-auto space-y-6 text-sm" id="laudo-print-area">
                 <div class="flex justify-between items-start border-b pb-4">
                     <div>
-                        <p class="font-bold text-slate-800 text-lg"> Relatório Ambiental Unificado</p>
+                        <p class="font-bold text-slate-800 text-lg">BRBank - Relatório Ambiental Unificado</p>
                         <p class="text-xs text-slate-500">ID da Certificação: <span class="font-mono text-slate-700" id="laudo-id-certificado"></span></p>
                     </div>
                     <div class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded font-mono font-bold text-center">
@@ -525,7 +530,7 @@
                 contrato: "70120",
                 agencia: "01",
                 cliente: "Agropecuária Rio Corrente Ltda",
-                cpfcnpj: "12.345.678/0001-90",
+                cpfcnpj: "1XXX1111XXXX",
                 linha: "Pronamp Custeio Agrícola",
                 valor: 1450000.00,
                 statusAmbiental: "Regular",
@@ -554,7 +559,7 @@
                 contrato: "85220",
                 agencia: "03",
                 cliente: "João da Silva Sauro",
-                cpfcnpj: "987.654.321-00",
+                cpfcnpj: "XXX.XXX.XXX.XX",
                 linha: "BNDES Automático",
                 valor: 890000.00,
                 statusAmbiental: "Alerta",
@@ -586,7 +591,7 @@
                 contrato: "99310",
                 agencia: "07",
                 cliente: "Fazenda Pinheiros S/A",
-                cpfcnpj: "44.555.666/0001-22",
+                cpfcnpj: "XXX.XXX.XXX.XX.XXX",
                 linha: "FCO Rural",
                 valor: 2310000.00,
                 statusAmbiental: "Bloqueado",
@@ -619,7 +624,7 @@
                 contrato: "44120",
                 agencia: "01",
                 cliente: "Sítio Primavera Agro",
-                cpfcnpj: "55.666.777/0001-88",
+                cpfcnpj: "XXX.XX.XXX.XX",
                 linha: "Inovagro",
                 valor: 450000.00,
                 statusAmbiental: "Regular",
@@ -645,7 +650,7 @@
                 contrato: "55230",
                 agencia: "02",
                 cliente: "Recanto Verde ME",
-                cpfcnpj: "22.333.444/0001-11",
+                cpfcnpj: "XXXDXXX.XXX.XX",
                 linha: "Pronaf Custeio",
                 valor: 195000.00,
                 statusAmbiental: "Regular",
@@ -668,33 +673,25 @@
             }
         ];
 
+        function toggleMainMenu() {
+    const sidebar = document.getElementById('main-sidebar');
+    sidebar.classList.toggle('-ml-72');
+    setTimeout(() => {
+        if (typeof mapDashboard !== 'undefined' && mapDashboard) mapDashboard.invalidateSize();
+    }, 300);
+}
         // Dicionário temporário dos resultados de análise calculados
         let analiseCalculadaAtiva = {};
 
         // Inicializador OnLoad
-        window.onload = function() {
-            // Inicializar Mapa do GeoValida
-            mapValida = L.map('mapa-valida').setView([-24.8, -52.0], 7);
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapValida);
-
-            activeLayerGroup = L.layerGroup().addTo(mapValida);
-
-            // Inicializar Mapa do Dashboard da Carteira
-            mapDashboard = L.map('mapa-dashboard').setView([-25.3, -52.5], 7);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
-            }).addTo(mapDashboard);
-
-            dashboardMarkersGroup = L.layerGroup().addTo(mapDashboard);
-
-            // Setup de Gráficos e Dados
-            construirGraficosDashboard();
-            atualizarDashboard();
-        };
-
+        // Inicializador OnLoad
+        function toggleMainMenu() {
+    const sidebar = document.getElementById('main-sidebar');
+    sidebar.classList.toggle('-ml-72');
+    setTimeout(() => {
+        if (typeof mapDashboard !== 'undefined' && mapDashboard) mapDashboard.invalidateSize();
+    }, 300);
+}
         // Troca de Abas
         function switchTab(tab) {
             const btnGeovalida = document.getElementById('btn-geovalida');
@@ -752,11 +749,11 @@
             const contratoLocalizado = CONTRATOS_MOCK.find(c => c.contrato === contratoNum && c.agencia === agencia);
 
             if (!contratoLocalizado) {
-                logTerminal(`Erro HTTP 404: Contrato ${contratoNum} não encontrado no banco de dados corporativo.`, "error");
+                logTerminal(`Erro HTTP 404: Contrato ${contratoNum} não encontrado no banco de dados corporativo do BRBank.`, "error");
                 return;
             }
 
-            // Simulação de chamadas paginadas assíncronas do backend à API original
+            // Simulação de chamadas paginadas assíncronas do backend à API original do BRBank
             let currentPage = 1;
             const totalPages = 3;
             const countPage = 100;
@@ -766,7 +763,7 @@
                     const isLast = currentPage === totalPages;
                     const countPoints = isLast ? 34 : countPage;
                     
-                    logTerminal(`Consumindo coordenadas - Página ${currentPage}/${totalPages} (${countPoints} pontos geodésicos obtidos)`, "info");
+                    logTerminal(`[BRBank SDK] Consumindo coordenadas - Página ${currentPage}/${totalPages} (${countPoints} pontos geodésicos obtidos)`, "info");
                     
                     currentPage++;
                     setTimeout(processarProximaPagina, 600);
