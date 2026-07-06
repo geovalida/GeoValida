@@ -1025,16 +1025,17 @@ path.leaflet-interactive {
                 <p class="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Módulos do Sistema</p>
                 <button onclick="toggleMainMenu()" class="text-slate-500 hover:text-white"><i class="ph-bold ph-x text-base"></i></button>
             </div>
-             <nav class="p-2 space-y-1">
-                <button id="btn-geovalida" onclick="window.location.href='index.html'" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm font-medium transition-all bg-emerald-600/10 text-emerald-400 border border-emerald-500/20">
+            <nav class="p-2 space-y-1">
+                <button id="btn-geovalida" onclick="switchTab('geovalida')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm font-medium transition-all bg-emerald-600/10 text-emerald-400 border border-emerald-500/20">
                     <i class="ph-bold ph-map-trifold text-lg"></i>
                     <span>Validação Geográfica</span>
                 </button>
-                <button id="btn-dashboard" onclick="window.location.href='painel.html?tab=dashboard&menu=open'" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm font-medium transition-all hover:bg-slate-800/50 text-slate-400 hover:text-slate-200">
+                <button id="btn-dashboard" onclick="switchTab('dashboard')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded text-sm font-medium transition-all hover:bg-slate-800/50 text-slate-400 hover:text-slate-200">
                     <i class="ph-bold ph-chart-pie-slice text-lg"></i>
-                    <span>Análise da Carteira</span>
+                    <span>Análise da Carteira (em breve)</span>
                 </button>
             </nav>
+
 
             
 
